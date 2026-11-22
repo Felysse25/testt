@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MORE THAN A MEAL | Every Dish Has a Story</title>
+  <link rel="stylesheet" href="exhibition/exhibition.css">
+  <script defer src="app/lib/three.min.js"></script>
+  <script defer src="app/lib/GLTFLoader.js"></script>
+  <script defer src="app/site/data.js"></script>
+  <script defer src="app/site/world.js"></script>
+  <script defer src="exhibition/content.js"></script>
+  <script defer src="exhibition/analytics.js"></script>
+  <script defer src="exhibition/flag-pixels.js"></script>
+  <script defer src="exhibition/welcome-logo.js"></script>
+  <script defer src="exhibition/scenery.js"></script>
+  <script defer src="exhibition/visitor-activities.js"></script>
+  <script defer src="exhibition/exhibition.js"></script>
+</head>
+<body>
+  <header class="masthead">
+    <div><p>Tzu Chi University · Student research exhibition</p><h1>MORE THAN A MEAL</h1><span>Every Dish Has a Story</span></div>
+    <div class="controls"><button id="home" type="button">Main island</button><button id="reset" type="button">Reset camera</button><button id="analytics-settings" type="button" hidden>Analytics settings</button></div>
+  </header>
+  <div class="privacy-bar">
+    <div id="analytics-choice" hidden>
+      <p>Allow optional Google Analytics to help us count visits and understand which exhibits people use. You can change your choice anytime.</p>
+      <div class="privacy-actions">
+        <button id="analytics-decline" type="button">Decline</button>
+        <button id="analytics-allow" type="button">Allow analytics</button>
+      </div>
+    </div>
+  </div>
+  <main class="layout">
+    <section class="stage" aria-label="Interactive 3D archipelago">
+      <div id="world"></div>
+      <p id="gesture">Drag to rotate · Scroll or pinch to zoom</p>
+    </section>
+    <aside class="guide" aria-label="Exhibition guide">
+      <nav id="islands" aria-label="Islands"></nav>
+      <h2 id="island-title"></h2>
+      <div id="exhibits"></div>
+    </aside>
+  </main>
+  <button class="passport-launch" id="passport-launch" type="button" aria-haspopup="dialog">
+    Food Passport <span id="passport-count" aria-live="polite"></span>
+  </button>
+  <dialog id="panel" aria-labelledby="panel-title">
+    <div class="panel-top"><span id="panel-context"></span><form method="dialog"><button autofocus type="submit">Close</button></form></div>
+    <h2 id="panel-title"></h2>
+    <div id="panel-body"></div>
+  </dialog>
+  <noscript>This exhibition needs JavaScript to display the islands and exhibits.</noscript>
+</body>
+</html>

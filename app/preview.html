@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>預覽</title>
+<link rel="stylesheet" href="site/site.css">
+</head>
+<body>
+<div id="app"></div>
+<script src="lib/three.min.js"></script>
+<script src="site/data.js"></script>
+<script src="site/world.js"></script>
+<script src="site/games.js"></script>
+<script src="site/site.js"></script>
+<script>
+/* 表單右側的即時預覽：接收表單送來的資料，重建網站 */
+(function () {
+  var site = null, lastKey = '';
+  function structKey(s) {
+    // 這些欄位改變時要重播開場運鏡，其他只要更新內容
+    return [s.type, s.shape, s.style, s.cinema, s.rpg, s.life, s.islands.filter(function (i) { return i.name; }).length].join('|');
+  }
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.isle === 'state') {
+      var k = structKey(d.state);
+      if (!site) { site = ISLE.Site.mount(document.getElementById('app'), d.state, { preview: true }); }
+      else site.update(d.state, { keepCam: k === lastKey });
+      lastKey = k;
+    } else if (d.isle === 'cmd' && site) {
+      if (d.cmd === 'tod') site.setTod(d.arg);
+      if (d.cmd === 'intro') site.playIntro();
+      if (d.cmd === 'open') site.open(+d.arg);
+    }
+  });
+  try { parent.postMessage({ isle: 'ready' }, '*'); } catch (e) { /* 單獨開啟時沒有 parent */ }
+})();
+</script>
+</body>
+</html>

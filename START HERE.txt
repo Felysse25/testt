@@ -1,0 +1,64 @@
+MORE THAN A MEAL
+Every Dish Has a Story
+
+Open index.html to visit the exhibition. For imported models or to preview
+the site before hosting it, open a terminal in this folder and run
+python -m http.server 8000
+Then visit http://localhost:8000. Deploy the entire folder to a static host.
+
+The original A and B generator pages are included, along with their existing
+preview, export, and game scripts. The exhibition uses the same Three.js r147
+renderer, procedural sea island geometry, orbit camera, and raycaster.
+The renderer accepts an optional scenery hook for the exhibition.
+
+Edit exhibition/content.js for station text, research findings, country names,
+dishes, quotations and media. Paths are relative to index.html. Leave optional
+video or model fields as empty strings until assets are ready. Use H.264 MP4
+for broad playback support and supply captions with the final video assets.
+For GLB or glTF models, keep associated textures and buffers in their original
+relative locations. The bundled loader supports standard, uncompressed
+GLB/glTF. Models are centered and fitted to the display table. A failed load
+keeps the stylized 3D placeholder.
+
+The seven dishes have stylized 3D displays and credited photographs. In each
+dish entry in exhibition/content.js, edit intro and background for exhibit
+copy, quote and quoteContext for personal survey responses, photos for
+image paths, credits and licenses, video for the optional MP4, and model
+for a GLB or glTF replacement. Country entries contain names and flag paths.
+
+Add the research infographic or verified findings, the welcome MP4,
+the two interview recordings, optional dish videos, and any custom food
+models. The exhibition uses the supplied survey quotations. Flags are
+from Flagcdn and photo credits and source links appear in the galleries.
+
+The country pavilions are stylized references to everyday architecture
+and markets. Decorative bands use original geometric patterns.
+
+Three timber footbridges connect the main island to the country islands.
+The built-in walkers follow their island loops and stay off the bridges.
+The exhibition loads the six shipped flag designs into WebGL from
+exhibition/flag-pixels.js. For a replacement flag, add a new image
+filename and set its path in exhibition/content.js so the original
+bundled flag texture is not selected.
+
+For the optional analytics and Google Forms feedback integrations, see
+ANALYTICS AND FEEDBACK SETUP.md. Add the real Measurement ID and responder
+link in exhibition/content.js before publishing to GitHub Pages.
+
+See HOW TO ADD MY CONTENT.md for the asset folders, editable media paths,
+supported file formats, and local preview instructions.
+
+VISITOR ACTIVITIES
+
+Open Food Passport from the floating button. Opening a dish awards its
+country's stamp once. Either Taiwan dish qualifies. The browser remembers
+the six stamp slots, and Reset passport asks before clearing them.
+
+Use the main island's quiz sign or guide to answer five questions and
+see the score. Retry quiz starts a fresh round. Edit the questions,
+explanations and passport illustrations in exhibition/content.js.
+
+Use the Reflection Wall sign or guide to write up to 300 characters.
+Save reflection updates the private note in this browser. Open the
+wall again to edit or delete it. Notes are never published or sent to
+analytics. Browser storage may be unavailable in some private modes.
